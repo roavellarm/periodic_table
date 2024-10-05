@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_05_000532) do
+ActiveRecord::Schema.define(version: 2024_10_05_000724) do
 
   create_table "elements", force: :cascade do |t|
     t.string "name"
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 2024_10_05_000532) do
     t.index ["element_id"], name: "index_orders_on_element_id"
   end
 
+  create_table "shells", force: :cascade do |t|
+    t.integer "element_id", null: false
+    t.integer "number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["element_id"], name: "index_shells_on_element_id"
+  end
+
   add_foreign_key "ionization_energies", "elements"
   add_foreign_key "orders", "elements"
+  add_foreign_key "shells", "elements"
 end
