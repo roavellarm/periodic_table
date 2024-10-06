@@ -115,9 +115,11 @@ abbr {
 .a {
   color: #3b82f6;
   text-decoration: none;
-  transition: opacity ease-in-out 0.3s;
+  background-color: transparent;
+  width: fit-content;
+  transition: all ease-in-out 0.3s;
   &:hover {
-    opacity: 0.5;
+    filter: saturate(2);
   }
 }
 .back {
@@ -129,9 +131,12 @@ abbr {
   border-radius: 4px;
   color: #fefefe;
   text-decoration: none;
-  transition: opacity ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+  border: 1px solid transparent;
   &:hover {
-    opacity: 0.5;
+    background-color: none;
+    border: 1px solid #222;
+    color: #fefefe;
   }
 }
 .content {
@@ -152,13 +157,6 @@ abbr {
   width: 230px;
   min-width: 230px;
   height: 230px;
-}
-.elementSummary {
-  background-color: #18181b;
-  padding: 0 2rem;
-  border-radius: 1rem;
-  line-height: 160%;
-  font-family: sans-serif;
 }
 .symbol {
   font-size: 5rem;
@@ -193,3 +191,27 @@ p {
 .Solid { color: #b5b5b5; }
 .Gas { color: #99F; }
 .Liquid { color: #FF4444; }
+
+.element-details {
+  font-family: sans-serif;
+  background-color: #18181b;
+  border-radius: 1rem;
+  line-height: 160%;
+  padding: 0 2rem;
+}
+
+.element-details h1 {
+  font-size: 24px;
+  color: #696969;
+  padding: 0;
+}
+
+.element-details .spectral-img img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+.element-details a:hover {
+  text-decoration: underline;
+}

@@ -24,25 +24,52 @@
           <% end  %>
         </div>
       </div>
-      <div class="back">
-        <a href="<%= table_index_path %>">⬅️ Voltar para a tabela</a>
-      </div>
+      <a class="back" href="<%= table_index_path %>">⬅️ Voltar para a tabela</a>
     </div>
 
-    <div class="elementSummary">
+    <div class="element-details">
       <h1><%= @element[:name] %> (<%= @element[:symbol] %>)</h1>
 
       <p><strong>Resumo:</strong> <%= @element[:summary] %></p>
       <ul>
+        <li><strong>Aparência:</strong> <%= @element[:appearance] %></li>
         <li><strong>Número Atômico:</strong> <%= @element[:number] %></li>
         <li><strong>Massa Atômica:</strong> <%= @element[:atomic_mass] %></li>
         <li><strong>Categoria:</strong> <%= @element[:category] %></li>
-        <li><strong>Fase:</strong> <%= @element[:phase] %></li>
+        <li><strong>Cor:</strong> <%= @element[:color] || 'não consta' %></li>
+        <li><strong>Densidade:</strong> <%= @element[:density] %> g/cm³</li>
         <li><strong>Ponto de Fusão:</strong> <%= @element[:melt] %> K</li>
         <li><strong>Ponto de Ebulição:</strong> <%= @element[:boil] %> K</li>
-        <li><strong>Densidade:</strong> <%= @element[:density] %> g/cm³</li>
+        <li><strong>Calor Molar:</strong> <%= @element[:molar_heat] || 'não consta' %></li>
+        <li><strong>Período:</strong> <%= @element[:period] %></li>
+        <li><strong>Fase:</strong> <%= @element[:phase] %></li>
+      </ul>
+
+      <h3>Descoberta e Nomeação</h3>
+      <ul>
+        <li><strong>Descoberto por:</strong> <%= @element[:discovered_by] || "Desconhecido" %></li>
+        <li><strong>Nomeado por:</strong> <%= @element[:named_by] || "Não nomeado" %></li>
+      </ul>
+
+      <% if @element[:spectral_img].present? %>
+        <div class="spectral-img">
+          <h3>Espectro</h3>
+          <img src="<%= @element[:spectral_img] %>" alt="Espectro de <%= @element[:name] %>">
+        </div>
+      <% end %>
+
+      <h3>Configuração Eletrônica</h3>
+      <ul>
         <li><strong>Configuração Eletrônica:</strong> <%= @element[:electron_configuration] %></li>
-        <li><strong>Níveis de energia:</strong> <%= @element[:shells].join(', ') %>.</li>
+        <li><strong>Configuração Semântica:</strong> <%= @element[:electron_configuration_semantic] %></li>
+        <li><strong>Níveis de Energia:</strong> <%= @element[:shells].join(', ') %></li>
+      </ul>
+
+      <h3>Propriedades Químicas</h3>
+      <ul>
+        <li><strong>Afinidade Eletrônica:</strong> <%= @element[:electron_affinity] %> kJ/mol</li>
+        <li><strong>Eletropositividade (Pauling):</strong> <%= @element[:electronegativity_pauling] || "Não disponível" %></li>
+        <li><strong>Energia de Ionização:</strong> <%= @element[:ionization_energies].join(' kJ/mol, ') %> kJ/mol</li>
       </ul>
 
       <p><a class="a" href="<%= @element[:source] %>" target="_blank">Mais sobre <%= @element[:name] %> na Wikipedia</a></p>
