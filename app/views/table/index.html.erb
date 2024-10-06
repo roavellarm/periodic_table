@@ -1,5 +1,36 @@
 <%= stylesheet_link_tag "table_styles", media: "all", "data-turbo-track": "reload" %>
-<div class="container">
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const alert = document.querySelector('.alert');
+    const overlay = document.querySelector('.overlay');
+
+    if (alert && alert.textContent.includes('Erro!')) {
+      alert.style.display = 'flex';
+      overlay.style.display = 'block';
+    }
+
+    window.closeAlert = function() {
+      alert.classList.add('fade-out');
+      overlay.classList.add('fade-out');
+      setTimeout(() => {
+        alert.style.display = 'none';
+        overlay.style.display = 'none';
+      }, 500);
+    };
+  });
+</script>
+
+<div class="overlay" style="display: none;"></div>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger alert-dismissible" style="display: none;">
+    <strong>Erro!</strong>&nbsp;<%= flash[:alert] %>
+    <span class="close" onclick="closeAlert()">&times;</span>
+  </div>
+<% end %>
+
+<div>
   <table>
     <% max_rows = 10 %>
     <% max_cols = 18 %>
@@ -7,14 +38,11 @@
     <% (1..max_rows).each do |row| %>
       <tr>
         <% (1..max_cols).each do |col| %>
-          <% # Find the element that belongs to this position (xpos, ypos) %>
           <% element = @elements.find { |e| e.xpos == col && e.ypos == row } %>
 
           <% if element %>
-            <% # Define CSS class based on the element category %>
             <% element_css_class = element.category.include?('unknown') ? 'unknown' : element.category.parameterize(separator: '-') %>
 
-            <% # Show element name with atomic number, symbol and atomic mass %>
             <td class="<%= element_css_class %> add-border">
               <a href="<%= table_path(element[:id]) %>">
                 <b>
@@ -33,7 +61,6 @@
               </a>
             </td>
           <% else %>
-            <% # Empty cell (no element in this position) %>
             <td class="empty"></td>
           <% end %>
         <% end %>
