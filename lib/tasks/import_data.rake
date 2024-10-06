@@ -51,17 +51,14 @@ namespace :import do
           el.electronegativity_pauling = element_data['electronegativity_pauling']
         end
 
-        # Creates or updates the ionization_energies
         element_data['ionization_energies']&.each do |energy|
-          IonizationEnergy.find_or_create_by!(element: element, value: energy)
+          IonizationEnergy.create!(element: element, value: energy)
         end
 
-        # Creates or updates the shells
         element_data['shells']&.each do |shell|
-          Shell.find_or_create_by!(element: element, number: shell)
+          Shell.create!(element: element, number: shell)
         end
 
-        # Creates or updates the elements order
         Order.find_or_create_by!(element: element)
       end
     end
