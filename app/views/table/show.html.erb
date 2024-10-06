@@ -1,37 +1,51 @@
 <%= stylesheet_link_tag "table_styles", media: "all", "data-turbo-track": "reload" %>
 
+
 <div>
-  <% element_css_class = @element[:category].include?('unknown') ? 'unknown' : @element[:category].parameterize(separator: '-') %>
-  <div class="card <%= element_css_class %> add-border">
-    <b>
-      <strong><%= @element[:number] %></strong>
-    </b>
-    <abbr class="<% @element[:phase] %>">
-      <%= @element[:symbol] %>
-    </abbr>
-    <em>
-      <%= @element[:name] %>
-    </em>
-    <small><%= @element[:atomic_mass].round(3) %></small>
+  <div class="content">
+    <% element_css_class = @element[:category].include?('unknown') ? 'unknown' : @element[:category].parameterize(separator: '-') %>
+    <div>
+      <div class="elementCard <%= element_css_class %> add-border">
+        <b>
+          <strong><%= @element[:number] %></strong>
+        </b>
+        <abbr class="<% @element[:phase] %> symbol" >
+          <%= @element[:symbol] %>
+        </abbr>
+        <em class="elementName">
+          <%= @element[:name] %>
+        </em>
+        <small><%= @element[:atomic_mass].round(3) %></small>
+        <div class="elementShells">
+          <% @element[:shells].each do |shell| %>
+            <p>
+              <%= shell  %>
+            </p>
+          <% end  %>
+        </div>
+      </div>
+      <div class="back">
+        <a href="<%= table_index_path %>">⬅️ Voltar para a tabela</a>
+      </div>
+    </div>
+
+    <div class="elementSummary">
+      <h1><%= @element[:name] %> (<%= @element[:symbol] %>)</h1>
+
+      <p><strong>Resumo:</strong> <%= @element[:summary] %></p>
+      <ul>
+        <li><strong>Número Atômico:</strong> <%= @element[:number] %></li>
+        <li><strong>Massa Atômica:</strong> <%= @element[:atomic_mass] %></li>
+        <li><strong>Categoria:</strong> <%= @element[:category] %></li>
+        <li><strong>Fase:</strong> <%= @element[:phase] %></li>
+        <li><strong>Ponto de Fusão:</strong> <%= @element[:melt] %> K</li>
+        <li><strong>Ponto de Ebulição:</strong> <%= @element[:boil] %> K</li>
+        <li><strong>Densidade:</strong> <%= @element[:density] %> g/cm³</li>
+        <li><strong>Configuração Eletrônica:</strong> <%= @element[:electron_configuration] %></li>
+        <li><strong>Níveis de energia:</strong> <%= @element[:shells].join(', ') %>.</li>
+      </ul>
+
+      <p><a class="a" href="<%= @element[:source] %>" target="_blank">Mais sobre <%= @element[:name] %> na Wikipedia</a></p>
+    </div>
   </div>
-<h1><%= @element[:name] %> (<%= @element[:symbol] %>)</h1>
-
-
-<p><strong>Resumo:</strong> <%= @element[:summary] %></p>
-<ul>
-  <li><strong>Número Atômico:</strong> <%= @element[:number] %></li>
-  <li><strong>Massa Atômica:</strong> <%= @element[:atomic_mass] %></li>
-  <li><strong>Categoria:</strong> <%= @element[:category] %></li>
-  <li><strong>Fase:</strong> <%= @element[:phase] %></li>
-  <li><strong>Ponto de Fusão:</strong> <%= @element[:melt] %> K</li>
-  <li><strong>Ponto de Ebulição:</strong> <%= @element[:boil] %> K</li>
-  <li><strong>Densidade:</strong> <%= @element[:density] %> g/cm³</li>
-  <li><strong>Configuração Eletrônica:</strong> <%= @element[:electron_configuration] %></li>
-  <li><strong>Níveis de energia:</strong> <%= @element[:shells].to_s %></li>
-</ul>
-
-<p><a class="a" href="<%= @element[:source] %>" target="_blank">Mais sobre <%= @element[:name] %> na Wikipedia</a></p>
-
-<p><a class="a" href="<%= table_index_path %>">Voltar à Tabela Periódica</a></p>
-
 </div>
