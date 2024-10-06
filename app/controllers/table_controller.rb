@@ -1,19 +1,17 @@
 class TableController < ApplicationController
   def index
-    @elements = formated_elements_data
+    @elements = Element.joins(:order).includes(:shells, :ionization_energies).order('orders.id')
   end
 
-  private
+  def show
+    result = Element.find_by_id(params[:id])
 
-  def elements
-    Element.joins(:order).includes(:shells, :ionization_energies).order('orders.id')
-  end
-
-  def formated_elements_data
-    elements.each_with_object({ "order" => [] }) do |element, hash|
-      element_key = element.name.parameterize(separator: '_')
-      hash["order"] << element_key
-      hash[element_key] = element.as_json
+    unless result
+      flash[:alert] = 'Elemento não encontrado.'
+      return redirect_to table_index_path
     end
+
+    @element = HashWithIndifferentAccess.new(result.as_json)
+    render :show
   end
 end
