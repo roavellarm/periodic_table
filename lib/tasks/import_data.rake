@@ -4,8 +4,6 @@ namespace :import do
     return puts 'rails import:data[file_path] required' unless args[:file]
     puts "Importing file #{args[:file]}"
 
-    # TODO: Escreva o código para importar os dados aqui
-
     # Reads the file path and checks if the file exists
     file_path = args[:file]
     return puts "File not found: #{file_path}" unless File.exist?(file_path)

@@ -1,0 +1,96 @@
+:root {
+  --body-bg: rgb(0, 0, 0);
+  --text: rgb(222, 222, 222);
+  --blocks: #191919;
+
+  --alkali-metal: #6c3b01;
+  --alkaline-earth-metal: #846011;
+  --lanthanide: #402c17;
+  --actinide: #732e4c;
+  --transition-metal: #711019;
+  --post-transition-metal: #003666;
+  --metalloid: #015146;
+  --diatomic-nonmetal: #3e6418;
+  --noble-gas: #3a2151;
+  --unknown: #222;
+  --polyatomic-nonmetal: #3e6418;
+  height: 100vh;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  padding: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: var(--body-bg);
+  color: var(--text);
+}
+a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--blocks);
+  color: #DEDEDE;
+  border: none;
+}
+td {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 12px;
+  border: none;
+}
+em {
+  font-size: 1em;
+  letter-spacing: -0.0333333em
+}
+abbr {
+  font-size: 2em;
+}
+
+.a {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: opacity ease-in-out 0.3s;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+.container {
+  background-color: var(--body-bg); color: var(--text);
+}
+.card {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+}
+.add-border {
+  border: 3px solid rgba(0,0,0,0.3);
+}
+/* Elements' category styles */
+.diatomic-nonmetal { background-color: var(--diatomic-nonmetal); }
+.noble-gas { background-color: var(--noble-gas); }
+.alkali-metal { background-color: var(--alkali-metal); }
+.alkaline-earth-metal { background-color: var(--alkaline-earth-metal); }
+.metalloid { background-color: var(--metalloid); }
+.polyatomic-nonmetal { background-color: var(--polyatomic-nonmetal); }
+.post-transition-metal { background-color: var(--post-transition-metal); }
+.transition-metal { background-color: var(--transition-metal); }
+.lanthanide { background-color: var(--lanthanide); }
+.actinide { background-color: var(--actinide); }
+.unknown { background-color: var(--unknown); color: #aaa; }
+.Solid { color: #b5b5b5; }
+.Gas { color: #99F; }
+.Liquid { color: #FF4444; }

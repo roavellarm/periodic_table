@@ -1,17 +1,43 @@
+<%= stylesheet_link_tag "table_styles", media: "all", "data-turbo-track": "reload" %>
 <div class="container">
-  <div class="row">
-    <ul>
-    <% @elements["order"].each do |element| %>
-      <li>
-        <%= @elements[element]["name"] %>
-        <%= @elements[element]["number"] %>-
-        <%= @elements[element]["period"] %>,
-        <%= @elements[element]["atomic_mass"] %>
-      </li>
+  <table>
+    <% max_rows = 10 %>
+    <% max_cols = 18 %>
+
+    <% (1..max_rows).each do |row| %>
+      <tr>
+        <% (1..max_cols).each do |col| %>
+          <% # Find the element that belongs to this position (xpos, ypos) %>
+          <% element = @elements.find { |e| e.xpos == col && e.ypos == row } %>
+
+          <% if element %>
+            <% # Define CSS class based on the element category %>
+            <% element_css_class = element.category.include?('unknown') ? 'unknown' : element.category.parameterize(separator: '-') %>
+
+            <% # Show element name with atomic number, symbol and atomic mass %>
+            <td class="<%= element_css_class %> add-border">
+              <a href="<%= table_path(element[:id]) %>">
+                <b>
+                  <strong><%= element.number %></strong>
+                </b>
+                <br>
+                <abbr class="<% element.phase %>">
+                  <%= element.symbol %>
+                </abbr>
+                <br>
+                <em>
+                  <%= element.name %>
+                </em>
+                <br>
+                <small><%= element.atomic_mass.round(3) %></small>
+              </a>
+            </td>
+          <% else %>
+            <% # Empty cell (no element in this position) %>
+            <td class="empty"></td>
+          <% end %>
+        <% end %>
+      </tr>
     <% end %>
-    </ul>
-  </div>
+  </table>
 </div>
-
-
-
