@@ -1,28 +1,19 @@
 <%= stylesheet_link_tag "table_styles", media: "all", "data-turbo-track": "reload" %>
 
-<h1>Nova Anotação</h1>
+<div class="annotations">
+  <header>
+    <h1>Nova Anotação</h1>
+  </header>
 
-<%= form_with(model: [@element, @annotation], local: true) do |form| %>
-  <% if @annotation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@annotation.errors.count, "erro") %> proibiu esta anotação de ser salva:</h2>
+  <%= form_with(model: [@element, @annotation], local: true) do |form| %>
+    <%= form.text_area(:content, rows: 5, placeholder: "Digite sua anotação aqui...") %>
 
-      <ul>
-        <% @annotation.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-<%= link_to 'Voltar', table_path(@element.id) %>
+  <footer>
+    <%= link_to '⬅️ Voltar', table_path(@element.id), class: :back %>
+  </footer>
+</div>

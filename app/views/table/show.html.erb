@@ -76,12 +76,12 @@
   </div>
 
   <div class="annotations">
-    <div class="annotation-header">
+    <header>
       <h1>Anotações</h1>
       <div>
         <%= link_to 'Adicionar Nova Anotação', new_element_annotation_path(@element[:id]), class: 'btn btn-primary' %>
       </div>
-    </div>
+    </header>
 
     <% if @annotations.blank? %>
       <h3>Nenhuma anotação registrada</h3>
