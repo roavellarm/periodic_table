@@ -23,5 +23,6 @@ module PeriodicTable
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.hosts << "3000-roavellarm-periodictabl-qxqv2gy2il3.ws-us116.gitpod.io"
   end
 end
