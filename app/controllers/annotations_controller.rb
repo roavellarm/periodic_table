@@ -8,7 +8,7 @@ class AnnotationsController < ApplicationController
   def create
     @annotation = @element.annotations.build(annotation_params)
     if @annotation.save
-      flash[:notice] = 'Anotação criada com sucesso.'
+      flash[:notice] = "Anotação criada com sucesso."
       redirect_to table_path(@element.id)
     else
       render :new
@@ -27,7 +27,7 @@ class AnnotationsController < ApplicationController
   def update
     @annotation = @element.annotations.find(params[:id])
     if @annotation.update(annotation_params)
-      flash[:notice] = 'Anotação atualizada com sucesso.'
+      flash[:notice] = "Anotação atualizada com sucesso."
       redirect_to table_path(@element.id)
     else
       render :edit
@@ -35,12 +35,11 @@ class AnnotationsController < ApplicationController
   end
 
   def destroy
-    byebug
     @element = Element.find(params[:element_id])
     @annotation = Annotation.find(params[:id])
     @annotation.destroy
 
-    flash[:notice] = 'Anotação removida com sucesso.'
+    flash[:notice] = "Anotação removida com sucesso."
     redirect_to table_path(@element)
   end
 
