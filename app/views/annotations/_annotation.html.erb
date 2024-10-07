@@ -1,0 +1,7 @@
+<%= stylesheet_link_tag "table_styles", media: "all", "data-turbo-track": "reload" %>
+
+<div class="annotation">
+  <p><%= annotation.content %></p>
+  <%= link_to 'Editar', edit_element_annotation_path(annotation.element, annotation) %>
+  <%= link_to 'Remover', element_annotation_path(annotation.element, annotation), method: :delete, data: { confirm: 'Tem certeza que deseja remover esta anotação?' } %>
+</div>

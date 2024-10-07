@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_06_190228) do
-
+ActiveRecord::Schema[7.2].define(version: 2024_10_06_190228) do
   create_table "annotations", force: :cascade do |t|
     t.text "content"
     t.integer "element_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["element_id"], name: "index_annotations_on_element_id"
   end
 
@@ -45,30 +44,30 @@ ActiveRecord::Schema.define(version: 2024_10_06_190228) do
     t.string "electron_configuration_semantic"
     t.float "electron_affinity"
     t.float "electronegativity_pauling"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ionization_energies", force: :cascade do |t|
     t.integer "element_id", null: false
     t.float "value"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["element_id"], name: "index_ionization_energies_on_element_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "element_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["element_id"], name: "index_orders_on_element_id"
   end
 
   create_table "shells", force: :cascade do |t|
     t.integer "element_id", null: false
     t.integer "number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["element_id"], name: "index_shells_on_element_id"
   end
 
