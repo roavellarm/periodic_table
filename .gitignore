@@ -54,3 +54,5 @@ yarn-debug.log*
 
 /public/system
 public/sitemap.xml.gz
+
+storage/
