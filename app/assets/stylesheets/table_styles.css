@@ -224,15 +224,14 @@ p {
 .element-details {
   font-family: sans-serif;
   background-color: #18181b;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   line-height: 160%;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
 }
 
 .element-details h1 {
   font-size: 24px;
   color: #696969;
-  padding: 0;
 }
 
 .element-details .spectral-img img {
@@ -245,26 +244,65 @@ p {
   text-decoration: underline;
 }
 .annotations {
-  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 1rem;
+  font-family: sans-serif;
+  background-color: #18181b;
+  border-radius: 0.5rem;
 }
-
+.annotation-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem;
+  background-color: #222;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.annotations h1 {
+  font-size: 2.5rem;
+  display: flex;
+  margin: 0;
+}
 .annotations h3 {
-  font-size: 20px;
-  color: #333;
+  font-size: 1.5rem;
+  color: #6c757d;
+  margin: 3rem 0;
 }
 
 .annotations ul {
   list-style: none;
+  width: 100%;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .annotations li {
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  transition: background-color ease-in-out 0.25s;
+  &:hover {
+    background-color: #222;
+  }
+}
+.annotation {
+  padding: 0 2rem;
+  line-height: 150%;
 }
 
 .annotation-actions {
-  display: inline-block;
-  margin-left: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
 }
 
 .btn {
