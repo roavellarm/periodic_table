@@ -1,6 +1,5 @@
 <%= stylesheet_link_tag "table_styles", media: "all", "data-turbo-track": "reload" %>
 
-
 <div>
   <div class="content">
     <% element_css_class = @element[:category].include?('unknown') ? 'unknown' : @element[:category].parameterize(separator: '-') %>
@@ -74,5 +73,28 @@
 
       <p><a class="a" href="<%= @element[:source] %>" target="_blank">Mais sobre <%= @element[:name] %> na Wikipedia</a></p>
     </div>
+  </div>
+
+  <div class="annotations">
+    <h3>Anotações</h3>
+
+    <%= link_to 'Adicionar Nova Anotação', new_element_annotation_path(@element[:id]), class: 'btn btn-primary' %>
+
+    <% if @annotations.blank? %>
+      Nenhuma anotação registrada
+    <% end %>
+
+    <ul>
+      <% @annotations.each do |annotation| %>
+        <li>
+          <%= annotation.content %>
+
+          <div class="annotation-actions">
+            <%= link_to 'Editar', edit_element_annotation_path(@element[:id], annotation), class: 'btn btn-secondary' %>
+            <%= link_to 'Remover', element_annotation_path(@element[:id], annotation), method: :delete, data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>

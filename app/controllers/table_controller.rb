@@ -12,6 +12,7 @@ class TableController < ApplicationController
     end
 
     @element = HashWithIndifferentAccess.new(result.as_json)
+    @annotations = result.annotations
     render :show
   end
 end
