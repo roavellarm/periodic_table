@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   resources :table, only: %i[index show]
 
   resources :elements do
-    resources :annotations, only: [:new, :create, :edit, :update, :destroy, :show]
+    resources :annotations, only: [ :new, :create, :edit, :update, :destroy, :show ]
   end
 end

@@ -41,7 +41,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   background-color: var(--blocks);
-  color: #DEDEDE;
+  color: #dedede;
   border: none;
 }
 td {
@@ -54,7 +54,7 @@ td {
 }
 em {
   font-size: 1em;
-  letter-spacing: -0.0333333em
+  letter-spacing: -0.0333333em;
 }
 abbr {
   font-size: 2em;
@@ -100,7 +100,7 @@ abbr {
   border: 1px solid #b71c1c;
 }
 .alert-danger::before {
-  content: "⚠️"; 
+  content: "⚠️";
   margin-right: 10px;
   font-size: 20px;
 }
@@ -174,23 +174,52 @@ p {
   max-width: 600px;
 }
 .add-border {
-  border: 3px solid rgba(0,0,0,0.3);
+  border: 3px solid rgba(0, 0, 0, 0.3);
 }
 /* Elements' category styles */
-.diatomic-nonmetal { background-color: var(--diatomic-nonmetal); }
-.noble-gas { background-color: var(--noble-gas); }
-.alkali-metal { background-color: var(--alkali-metal); }
-.alkaline-earth-metal { background-color: var(--alkaline-earth-metal); }
-.metalloid { background-color: var(--metalloid); }
-.polyatomic-nonmetal { background-color: var(--polyatomic-nonmetal); }
-.post-transition-metal { background-color: var(--post-transition-metal); }
-.transition-metal { background-color: var(--transition-metal); }
-.lanthanide { background-color: var(--lanthanide); }
-.actinide { background-color: var(--actinide); }
-.unknown { background-color: var(--unknown); color: #aaa; }
-.Solid { color: #b5b5b5; }
-.Gas { color: #99F; }
-.Liquid { color: #FF4444; }
+.diatomic-nonmetal {
+  background-color: var(--diatomic-nonmetal);
+}
+.noble-gas {
+  background-color: var(--noble-gas);
+}
+.alkali-metal {
+  background-color: var(--alkali-metal);
+}
+.alkaline-earth-metal {
+  background-color: var(--alkaline-earth-metal);
+}
+.metalloid {
+  background-color: var(--metalloid);
+}
+.polyatomic-nonmetal {
+  background-color: var(--polyatomic-nonmetal);
+}
+.post-transition-metal {
+  background-color: var(--post-transition-metal);
+}
+.transition-metal {
+  background-color: var(--transition-metal);
+}
+.lanthanide {
+  background-color: var(--lanthanide);
+}
+.actinide {
+  background-color: var(--actinide);
+}
+.unknown {
+  background-color: var(--unknown);
+  color: #aaa;
+}
+.Solid {
+  color: #b5b5b5;
+}
+.Gas {
+  color: #99f;
+}
+.Liquid {
+  color: #ff4444;
+}
 
 .element-details {
   font-family: sans-serif;
